@@ -66,4 +66,44 @@ game = {
     }
 }
 
+# Creating hashes
+
+hash = {a: 1, b:2, c:3}
+alternate_hash = {"a" => 1, :b => 2, "c" => 3} # don't use this syntax
+
+# accessing key value pairs
+hash[:a] # returns 1
+alternate_hash["a"] # returns 1`
+
+# adding key value pairs
+hash[:d] = 4 
+alternate_hash["d"] = 4
+
+# resetting a keys value
+hash[:c] = 5
+alternate_hash["a"] = 0
+
+# deleting key value pair
+hash.delete(:d)
+alternate_hash.delete("d")
+
+all_players = game[:home][:players].concat(game[:away][:players])
+
+#filter all guards from both home and away teams
+
+guards = all_players.filter do |player|
+    player[:position] == "G"
+end
+# // all_players.filter(player => player.positon === "G")
+
+
+#sort all players by jersey number in ascending order
+
+sorted_players = all_players.sort do |a, b| 
+    a[:number] <=> b[:number]
+end
+# // all_players.sort((a,b) => a.number <=> b.number)
+
+
 binding.pry
+
